@@ -316,18 +316,7 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="assets/js/inline-components.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script type="module">
-        import SalaryCalculator from './src/salary-calculator.js';
-        import { initializeFormController } from './src/form-controller.js';
 
-        // 1. สร้าง Calculator สำหรับ "พนักงานราชการ" โดยระบุไฟล์ JSON ที่ถูกต้อง
-        const govEmpCalculator = new SalaryCalculator('/data/salaryGovEmp.json');
-
-        // 2. ส่ง Calculator ที่สร้างขึ้นไปให้ Form Controller จัดการ UI
-        initializeFormController(govEmpCalculator);
-    </script>
 </body>
 
 </html>
