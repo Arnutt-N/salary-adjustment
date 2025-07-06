@@ -1,20 +1,16 @@
-import { defineConfig } from 'vite'
+import { resolve } from "path"
+import { defineConfig } from "vite"
 
 export default defineConfig({
-  // Base URL for your app
-  base: '/',
-  
-  // Build configuration
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    minify: true,
-    sourcemap: false
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, "index.html"),
+        govEmp: resolve(__dirname, "gov-emp.html"),
+        // หากคุณมีหน้า civil-servant.html และ coming-soon.html ให้เอา comment ออก
+        // civilServant: resolve(__dirname, 'civil-servant.html'),
+        comingSoon: resolve(__dirname, "coming-soon.html"),
+      },
+    },
   },
-  
-  // Server configuration for development
-  server: {
-    port: 3000,
-    open: true
-  }
 })
