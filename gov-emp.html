@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การปรับค่าตอบแทนพนักงานราชการ</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข และรายละเอียดการปรับขึ้นค่าตอบแทน">
+    <meta name="keywords" content="เงินเดือนข้าราชการ, พนักงานราชการ, มติครม, การปรับเงินเดือน">
+    <meta name="author" content="ระบบสารสนเทศกลาง">
+
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <script type="module" src="/src/main.js"></script>
+</head>
+
+<body class="bg-slate-50">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative flex items-center justify-center min-h-screen overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50 -z-10"></div>
+            <div class="container px-6 py-16 mx-auto text-center">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-8">
+                        <div
+                            class="flex items-center justify-center w-24 h-24 p-6 mx-auto mb-6 bg-blue-100 rounded-full">
+                            <i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl font-extrabold leading-tight text-gray-800 md:text-6xl fade-in-up delay-1">
+                        การปรับค่าตอบแทนพนักงานราชการ
+                    </h1>
+                    <p class="max-w-3xl mx-auto mt-6 text-xl text-gray-600 fade-in-up delay-2">
+                        ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข
+                        และรายละเอียดการปรับขึ้นค่าตอบแทน
+                    </p>
+
+                    <div class="flex flex-col justify-center gap-4 mt-8 sm:flex-row">
+                        <button
+                            class="px-8 py-3 font-semibold text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700">
+                            คำนวณค่าตอบแทน
+                        </button>
+                        <button
+                            class="px-8 py-3 font-semibold text-blue-600 transition-colors border border-blue-600 rounded-lg hover:bg-blue-50">
+                            ดูรายละเอียดเพิ่มเติม
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-slate-100" id="calculator">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="grid items-stretch grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+
+                    <!-- Form Card -->
+                    <div class="flex flex-col p-8 bg-white border border-gray-200 shadow-lg rounded-2xl">
+                        <div class="flex items-center gap-3 pb-4 mb-6 border-b border-gray-200">
+                            <i data-lucide="edit-3" class="w-8 h-8 text-indigo-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">คำนวณการปรับค่าตอบแทน</h3>
+                        </div>
+                        <form id="salary-form" class="flex flex-col flex-grow">
+                            <div class="flex-grow space-y-6">
+                                <div>
+                                    <label for="effectiveDate"
+                                        class="flex items-center gap-2 mb-2 text-base font-medium text-gray-700">
+                                        <i data-lucide="calendar-days" class="w-5 h-5 text-gray-400"></i>
+                                        วันที่มีผลบังคับใช้
+                                    </label>
+                                    <select id="effectiveDate" name="effectiveDate"
+                                        class="w-full p-3 transition border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="1/5/2024">1 พฤษภาคม 2567</option>
+                                        <option value="1/5/2025">1 พฤษภาคม 2568</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="workGroup"
+                                        class="flex items-center gap-2 mb-2 text-base font-medium text-gray-700">
+                                        <i data-lucide="briefcase" class="w-5 h-5 text-gray-400"></i>
+                                        ประเภทกลุ่มงาน
+                                    </label>
+                                    <select id="workGroup" name="workGroup"
+                                        class="w-full p-3 transition border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                        <option value="" disabled selected>-- กรุณาเลือกกลุ่มงาน --</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="degree"
+                                        class="flex items-center gap-2 mb-2 text-base font-medium text-gray-700">
+                                        <i data-lucide="graduation-cap" class="w-5 h-5 text-gray-400"></i>
+                                        วุฒิการศึกษาที่บรรจุ
+                                    </label>
+                                    <select id="degree" name="degree"
+                                        class="w-full p-3 truncate transition border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                        disabled>
+                                        <option value="" disabled selected>-- กรุณาเลือกวุฒิการศึกษา --</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="currentSalary"
+                                        class="flex items-center gap-2 mb-2 text-base font-medium text-gray-700">
+                                        <i data-lucide="coins" class="w-5 h-5 text-gray-400"></i>
+                                        <span id="current-salary-label">ค่าตอบแทนปัจจุบัน ณ วันที่ 1 ตุลาคม 2566</span>
+                                    </label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">฿</span>
+                                        <input type="number" id="currentSalary" name="currentSalary"
+                                            class="w-full p-3 pl-8 transition border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                            placeholder="ระบุค่าตอบแทนปัจจุบัน">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-4 pt-8 mt-auto sm:flex-row">
+                                <button type="button" id="calculate-btn"
+                                    class="flex items-center justify-center w-full gap-2 px-6 py-3 font-semibold text-white transition-colors bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700">
+                                    <i data-lucide="calculator" class="w-5 h-5"></i>
+                                    คำนวณ
+                                </button>
+                                <button type="reset" id="reset-btn"
+                                    class="flex items-center justify-center w-full gap-2 px-6 py-3 font-semibold text-gray-700 transition-colors bg-gray-200 rounded-lg hover:bg-gray-300">
+                                    <i data-lucide="eraser" class="w-5 h-5"></i>
+                                    ล้างข้อมูล
+                                </button>
+                            </div>
+
+                            <div
+                                class="p-4 mt-8 text-xs border-l-4 rounded-r-lg border-slate-300 bg-slate-100 text-slate-700">
+                                <p class="mb-2 font-semibold text-slate-800">หมายเหตุ:</p>
+                                <p class="leading-relaxed">กรณี กลุ่มงานบริการ และกลุ่มงานเทคนิคทั่วไป
+                                    ที่บรรจุด้วยคุณวุฒิปริญญาตรีหรือเทียบเท่า ให้เลือกวุฒิที่บรรจุเป็น
+                                    ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) หรืออนุปริญญาหรือ...</p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="sticky flex flex-col p-8 bg-white border border-gray-200 shadow-lg rounded-2xl top-24">
+                        <!-- Header -->
+                        <div class="flex items-center gap-3 pb-4 mb-6 border-b border-gray-200">
+                            <i data-lucide="bar-chart-3" class="w-8 h-8 text-indigo-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-800">ผลการคำนวณ</h3>
+                        </div>
+
+                        <!-- Result Display Area -->
+                        <div id="result-display" class="flex flex-col flex-grow">
+                            <div class="flex-grow space-y-8">
+                                <!-- Final Result Section -->
+                                <div class="pb-6 space-y-4 border-b border-gray-200">
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
+                                            <span class="text-gray-600">เงินชดเชยที่ได้ปรับ</span>
+                                        </div>
+                                        <p id="result-increase" class="text-2xl font-bold text-green-600">-</p>
+                                    </div>
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="wallet" class="w-5 h-5 text-indigo-600"></i>
+                                            <span class="text-lg font-semibold text-gray-800">ค่าตอบแทนที่ได้รับ</span>
+                                        </div>
+                                        <p id="result-new-salary" class="text-4xl font-extrabold text-indigo-700">-</p>
+                                    </div>
+                                </div>
+
+                                <!-- Calculation Breakdown Section -->
+                                <div>
+                                    <h4 class="mb-3 text-sm font-semibold text-gray-500 uppercase">รายละเอียดการคำนวณ
+                                    </h4>
+                                    <div class="p-4 space-y-3 text-sm border border-gray-200 rounded-lg bg-slate-50">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">ค่าตอบแทนปัจจุบัน:</span>
+                                            <span id="detail-current-salary"
+                                                class="font-mono font-semibold text-gray-800">-</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">อัตราแรกบรรจุเดิม:</span>
+                                            <span id="detail-salary-last"
+                                                class="font-mono font-semibold text-gray-800">-</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">อัตราแรกบรรจุใหม่:</span>
+                                            <span id="detail-salary-new"
+                                                class="font-mono font-semibold text-gray-800">-</span>
+                                        </div>
+                                        <hr class="border-gray-200">
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">เงินชดเชย (คำนวณ):</span>
+                                            <span id="detail-increase-rounded"
+                                                class="font-mono font-semibold text-gray-800">-</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">อัตราค่าตอบแทนใหม่ (คำนวณ):</span>
+                                            <span id="detail-salary-adjust"
+                                                class="font-mono font-semibold text-gray-800">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Calculation Method Box -->
+                                <div id="calculation-method"
+                                    class="p-4 text-xs text-indigo-800 border-l-4 border-indigo-300 bg-indigo-50">
+                                    <p class="mb-2 font-semibold">วิธีการคำนวณ:</p>
+                                    <div class="space-y-2 font-mono">
+                                        <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
+                                            <span class="text-right">เงินชดเชย</span>
+                                            <span>=</span>
+                                            <span>อัตราชดเชย x (ค่าตอบแทนปัจจุบัน - อัตราแรกบรรจุเดิม)</span>
+                                        </div>
+                                        <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
+                                            <span class="text-right">อัตราค่าตอบแทนใหม่</span>
+                                            <span>=</span>
+                                            <span>อัตราแรกบรรจุใหม่ + เงินชดเชย</span>
+                                        </div>
+                                        <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
+                                            <span class="text-right">เงินชดเชยที่ได้ปรับ</span>
+                                            <span>=</span>
+                                            <span>อัตราค่าตอบแทนใหม่ - ค่าตอบแทนปัจจุบัน</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Calculation Remark -->
+                            <div id="calculation-details" class="pt-4 mt-auto text-sm border-t border-gray-200">
+                                <h4 class="mb-2 font-semibold text-center text-gray-500 uppercase">หลักเกณฑ์และเงื่อนไข
+                                </h4>
+                                <p id="result-remark" class="italic text-center text-gray-500">
+                                    กรุณากรอกข้อมูลเพื่อเริ่มการคำนวณ
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- No Adjustment Reason (Hidden by default) -->
+                        <div id="no-adjustment-reason" class="hidden">
+                            <div class="p-6 text-center bg-yellow-50 rounded-xl">
+                                <i data-lucide="alert-triangle" class="w-12 h-12 mx-auto text-yellow-500"></i>
+                                <h4 class="mt-4 mb-2 text-lg font-semibold text-yellow-800">ไม่ได้รับการปรับค่าตอบแทน
+                                </h4>
+                                <p id="reason-text" class="text-sm text-yellow-700">
+                                    เนื่องจากค่าตอบแทนปัจจุบันของคุณสูงกว่าหรือเท่ากับฐานค่าตอบแทนใหม่ที่กำหนด
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="py-20 bg-white">
+            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="mb-16 text-center">
+                    <h2 class="text-3xl font-bold text-gray-900">ข้อมูลสำคัญสำหรับพนักงานราชการ</h2>
+                    <p class="mt-4 text-lg text-gray-600">หลักเกณฑ์และเงื่อนไขการปรับค่าตอบแทนพนักงานราชการ</p>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Info Cards -->
+                    <div class="p-6 border border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-blue-100 rounded-full">
+                            <i data-lucide="calendar-check" class="w-6 h-6 text-blue-600"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-semibold text-gray-800">วันที่มีผลบังคับใช้</h3>
+                        <p class="text-gray-600">การปรับขึ้นค่าตอบแทนมีผลตั้งแต่วันที่ 1 พฤษภาคม 2567</p>
+                    </div>
+
+                    <div class="p-6 border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-green-100 rounded-full">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-semibold text-gray-800">อัตราการปรับขึ้น</h3>
+                        <p class="text-gray-600">ปรับขึ้น 10% ภายใน 2 ปี สำหรับพนักงานราชการทุกระดับ</p>
+                    </div>
+
+                    <div class="p-6 border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-purple-100 rounded-full">
+                            <i data-lucide="star" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <h3 class="mb-2 text-xl font-semibold text-gray-800">ค่าตอบแทนผู้จบใหม่</h3>
+                        <p class="text-gray-600">พนักงานราชการใหม่จะได้ค่าตอบแทนเริ่มต้น 18,000 บาท</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification will be loaded here -->
+    <div id="toast-container"></div>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/inline-components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="module">
+        import SalaryCalculator from './src/salary-calculator.js';
+        import { initializeFormController } from './src/form-controller.js';
+
+        // 1. สร้าง Calculator สำหรับ "พนักงานราชการ" โดยระบุไฟล์ JSON ที่ถูกต้อง
+        const govEmpCalculator = new SalaryCalculator('/data/salaryGovEmp.json');
+
+        // 2. ส่ง Calculator ที่สร้างขึ้นไปให้ Form Controller จัดการ UI
+        initializeFormController(govEmpCalculator);
+    </script>
+</body>
+
+</html>
