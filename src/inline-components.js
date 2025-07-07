@@ -46,6 +46,9 @@ function loadPageComponents() {
     case "gov-emp.html":
       toastHtml = toastGovEmpHtml
       break
+    case "coming-soon.html":
+      toastHtml = toastDefaultHtml
+      break
     default:
       toastHtml = toastDefaultHtml
   }

@@ -7,8 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         govEmp: resolve(__dirname, "gov-emp.html"),
-        // หากคุณมีหน้า civil-servant.html และ coming-soon.html ให้เอา comment ออก
-        // civilServant: resolve(__dirname, 'civil-servant.html'),
+        civilServant: resolve(__dirname, 'civil-servant.html'),
         comingSoon: resolve(__dirname, "coming-soon.html"),
       },
     },
