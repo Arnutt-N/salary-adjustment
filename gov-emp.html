@@ -41,30 +41,29 @@
     <!-- Main Content -->
     <main class="pt-16">
         <!-- Hero Section -->
-        <section class="relative flex items-center justify-center min-h-screen overflow-hidden">
+        <section class="relative flex items-center justify-center overflow-hidden" style="min-height: 85vh;">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50 -z-10"></div>
-            <div class="container px-6 py-16 mx-auto text-center">
-                <div class="max-w-4xl mx-auto">
+            <div class="container px-6 py-12 mx-auto text-center">
+                <div class="max-w-5xl mx-auto">
                     <div class="mb-8">
                         <div
                             class="flex items-center justify-center w-24 h-24 p-6 mx-auto mb-6 bg-blue-100 rounded-full">
                             <i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i>
                         </div>
                     </div>
-                    <h1 class="text-4xl font-extrabold leading-tight text-gray-800 md:text-6xl fade-in-up delay-1">
+                    <h1 class="text-3xl font-extrabold leading-tight text-gray-800 md:text-5xl lg:text-6xl fade-in-up delay-1">
                         การปรับค่าตอบแทนพนักงานราชการ
                     </h1>
-                    <p class="max-w-3xl mx-auto mt-6 text-xl text-gray-600 fade-in-up delay-2">
-                        ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข
-                        และรายละเอียดการปรับขึ้นค่าตอบแทน
+                    <p class="max-w-5xl mx-auto mt-6 text-lg text-gray-600 md:text-xl lg:text-xl xl:max-w-6xl fade-in-up delay-2" style="line-height: 1.6; word-spacing: 0.1em;">
+                        ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข และรายละเอียดการปรับขึ้นค่าตอบแทน
                     </p>
 
                     <div class="flex flex-col justify-center gap-4 mt-8 sm:flex-row">
-                        <button
+                        <button id="calculate-hero-btn"
                             class="px-8 py-3 font-semibold text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700">
                             คำนวณค่าตอบแทน
                         </button>
-                        <button
+                        <button id="details-hero-btn"
                             class="px-8 py-3 font-semibold text-blue-600 transition-colors border border-blue-600 rounded-lg hover:bg-blue-50">
                             ดูรายละเอียดเพิ่มเติม
                         </button>
@@ -251,9 +250,9 @@
 
                             <!-- Calculation Remark -->
                             <div id="calculation-details" class="pt-4 mt-auto text-sm border-t border-gray-200">
-                                <h4 class="mb-2 font-semibold text-center text-gray-500 uppercase">หลักเกณฑ์และเงื่อนไข
+                                <h4 class="mb-2 font-semibold text-left text-gray-500 uppercase">หลักเกณฑ์และเงื่อนไข
                                 </h4>
-                                <p id="result-remark" class="italic text-center text-gray-500">
+                                <p id="result-remark" class="text-left text-gray-500">
                                     กรุณากรอกข้อมูลเพื่อเริ่มการคำนวณ
                                 </p>
                             </div>
@@ -276,7 +275,7 @@
         </section>
 
         <!-- Information Section -->
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-white" id="information">
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="mb-16 text-center">
                     <h2 class="text-3xl font-bold text-gray-900">ข้อมูลสำคัญสำหรับพนักงานราชการ</h2>
@@ -284,25 +283,25 @@
                 </div>
 
                 <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Info Cards -->
-                    <div class="p-6 border border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-blue-100 rounded-full">
+                    <!-- Info Cards with enhanced effects from index -->
+                    <div class="flex flex-col items-center p-6 text-center border border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl card-hover">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-blue-100 rounded-full transition-colors group-hover:bg-blue-200">
                             <i data-lucide="calendar-check" class="w-6 h-6 text-blue-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">วันที่มีผลบังคับใช้</h3>
                         <p class="text-gray-600">การปรับขึ้นค่าตอบแทนมีผลตั้งแต่วันที่ 1 พฤษภาคม 2567</p>
                     </div>
 
-                    <div class="p-6 border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-green-100 rounded-full">
+                    <div class="flex flex-col items-center p-6 text-center border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl card-hover">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-green-100 rounded-full transition-colors group-hover:bg-green-200">
                             <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">อัตราการปรับขึ้น</h3>
                         <p class="text-gray-600">ปรับขึ้น 10% ภายใน 2 ปี สำหรับพนักงานราชการทุกระดับ</p>
                     </div>
 
-                    <div class="p-6 border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-purple-100 rounded-full">
+                    <div class="flex flex-col items-center p-6 text-center border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl card-hover">
+                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-purple-100 rounded-full transition-colors group-hover:bg-purple-200">
                             <i data-lucide="star" class="w-6 h-6 text-purple-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">ค่าตอบแทนผู้จบใหม่</h3>
@@ -319,7 +318,51 @@
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
 
-    <!-- Scripts -->
+    <!-- Enhanced Scripts -->
+    <script>
+        // Enhanced Navigation Functions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to smooth scroll to section
+            function smoothScrollTo(targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const yOffset = -80; // Adjust for fixed navbar
+                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }
+            }
+
+            // Hero button click handlers
+            const calculateHeroBtn = document.getElementById('calculate-hero-btn');
+            const detailsHeroBtn = document.getElementById('details-hero-btn');
+
+            if (calculateHeroBtn) {
+                calculateHeroBtn.addEventListener('click', function() {
+                    smoothScrollTo('calculator');
+                });
+            }
+
+            if (detailsHeroBtn) {
+                detailsHeroBtn.addEventListener('click', function() {
+                    smoothScrollTo('information');
+                });
+            }
+
+            // Add Enter key support for form
+            const salaryForm = document.getElementById('salary-form');
+            if (salaryForm) {
+                salaryForm.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const calculateBtn = document.getElementById('calculate-btn');
+                        if (calculateBtn) {
+                            calculateBtn.click();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
