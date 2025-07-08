@@ -108,7 +108,7 @@ export async function initializeFormController(calculator) {
       const optionsNoDecimal = { maximumFractionDigits: 0 }
 
       // Final results
-      resultIncreaseEl.textContent = `+${result.increase.toLocaleString(
+      resultIncreaseEl.textContent = `${result.increase.toLocaleString(
         "th-TH",
         optionsNoDecimal
       )} บาท`
