@@ -51,11 +51,14 @@
                             <i data-lucide="briefcase" class="w-12 h-12 text-blue-600"></i>
                         </div>
                     </div>
-                    <h1 class="text-3xl font-extrabold leading-tight text-gray-800 md:text-5xl lg:text-6xl fade-in-up delay-1">
+                    <h1
+                        class="text-3xl font-extrabold leading-tight text-gray-800 md:text-5xl lg:text-6xl fade-in-up delay-1">
                         การปรับค่าตอบแทนพนักงานราชการ
                     </h1>
-                    <p class="max-w-4xl mx-auto mt-6 text-lg text-gray-600 md:text-xl lg:text-xl xl:max-w-6xl fade-in-up delay-2">
-                        ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข และรายละเอียดการปรับค่าตอบแทน
+                    <p
+                        class="max-w-4xl mx-auto mt-6 text-lg text-gray-600 md:text-xl lg:text-xl xl:max-w-6xl fade-in-up delay-2">
+                        ข้อมูลสำคัญเกี่ยวกับการปรับค่าตอบแทนพนักงานราชการ หลักเกณฑ์ เงื่อนไข
+                        และรายละเอียดการปรับค่าตอบแทน
                     </p>
 
                     <div class="flex flex-col justify-center gap-4 mt-8 sm:flex-row">
@@ -140,7 +143,7 @@
                             </div>
 
                             <div class="flex flex-col gap-4 pt-8 mt-auto sm:flex-row">
-                                <button type="button" id="calculate-btn"
+                                <button type="submit" id="calculate-btn"
                                     class="flex items-center justify-center w-full gap-2 px-6 py-3 font-semibold text-white transition-colors bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700">
                                     <i data-lucide="calculator" class="w-5 h-5"></i>
                                     คำนวณ
@@ -172,68 +175,97 @@
 
                         <!-- Result Display Area -->
                         <div id="result-display" class="flex flex-col flex-grow">
-                            <div class="flex-grow space-y-8">
+                            <div class="flex-grow space-y-4">
                                 <!-- Final Result Section -->
-                                <div class="pb-6 space-y-4 border-b border-gray-200">
+                                <div class="pb-4 space-y-3 border-b border-gray-200">
                                     <div class="flex items-baseline justify-between">
                                         <div class="flex items-center gap-3">
                                             <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>
                                             <span class="text-gray-600">เงินชดเชยที่ได้ปรับ</span>
                                         </div>
-                                        <p id="result-increase" class="text-2xl font-bold text-green-600">-</p>
+                                        <p id="result-increase" class="text-xl font-bold text-green-600">-</p>
                                     </div>
                                     <div class="flex items-baseline justify-between">
                                         <div class="flex items-center gap-3">
-                                            <i data-lucide="wallet" class="w-5 h-5 text-indigo-600"></i>
-                                            <span class="text-lg font-semibold text-gray-800">ค่าตอบแทนที่ได้รับ</span>
+                                            <i data-lucide="wallet" class="w-5 h-5 text-blue-600"></i>
+                                            <span class="text-gray-600">ค่าตอบแทนที่ได้รับ</span>
                                         </div>
-                                        <p id="result-new-salary" class="text-4xl font-extrabold text-indigo-700">-</p>
+                                        <p id="result-new-salary" class="text-xl font-bold text-blue-600">-</p>
+                                    </div>
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="plus-circle" class="w-5 h-5 text-orange-500"></i>
+                                            <span class="text-gray-600">เงินเพิ่มการครองชีพ</span>
+                                        </div>
+                                        <p id="result-temp-allowance" class="text-xl font-bold text-orange-500">-</p>
+                                    </div>
+                                    <div class="flex items-baseline justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <i data-lucide="banknote" class="w-5 h-5 text-indigo-600"></i>
+                                            <span class="text-lg font-semibold text-gray-800">ค่าตอบแทนที่ได้รับ +
+                                                เงินเพิ่มฯ</span>
+                                        </div>
+                                        <p id="result-total-salary" class="text-3xl font-extrabold text-indigo-700">-
+                                        </p>
                                     </div>
                                 </div>
 
                                 <!-- Calculation Breakdown Section -->
-                                <div>
+                                <div class="calculation-breakdown">
                                     <h4 class="mb-3 text-sm font-semibold text-gray-500 uppercase">รายละเอียดการคำนวณ
                                     </h4>
-                                    <div class="p-4 space-y-3 text-sm border border-gray-200 rounded-lg bg-slate-50">
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-600">ค่าตอบแทนปัจจุบัน:</span>
-                                            <span id="detail-current-salary"
-                                                class="font-mono font-semibold text-gray-800">-</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-600">อัตราแรกบรรจุเดิม:</span>
-                                            <span id="detail-salary-last"
-                                                class="font-mono font-semibold text-gray-800">-</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-600">อัตราแรกบรรจุใหม่:</span>
-                                            <span id="detail-salary-new"
-                                                class="font-mono font-semibold text-gray-800">-</span>
-                                        </div>
-                                        <hr class="border-gray-200">
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-600">เงินชดเชย (คำนวณ):</span>
-                                            <span id="detail-increase-rounded"
-                                                class="font-mono font-semibold text-gray-800">-</span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span class="text-gray-600">อัตราค่าตอบแทนใหม่ (คำนวณ):</span>
-                                            <span id="detail-salary-adjust"
-                                                class="font-mono font-semibold text-gray-800">-</span>
+                                    <div class="p-4 text-sm border border-gray-200 rounded-lg bg-slate-50">
+                                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                            <!-- คอลัมน์ซ้าย -->
+                                            <div class="space-y-3">
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">ค่าตอบแทนปัจจุบัน :</span>
+                                                    <span id="detail-current-salary"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">อัตราแรกบรรจุเดิม :</span>
+                                                    <span id="detail-salary-last"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">อัตราแรกบรรจุใหม่ :</span>
+                                                    <span id="detail-salary-new"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- คอลัมน์ขวา -->
+                                            <div class="space-y-3">
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">เงินชดเชย :</span>
+                                                    <span id="detail-increase-rounded"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">อัตราค่าตอบแทนใหม่ :</span>
+                                                    <span id="detail-salary-adjust"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-600">เงินเพิ่มการครองชีพ :</span>
+                                                    <span id="detail-temp-allowance"
+                                                        class="font-mono font-semibold text-gray-800">-</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Calculation Method Box -->
+                                <!-- Calculation Method Section -->
                                 <div id="calculation-method"
                                     class="p-4 text-xs text-indigo-800 border-l-4 border-indigo-300 bg-indigo-50">
-                                    <p class="mb-2 font-semibold">วิธีการคำนวณ:</p>
+                                    <p class="mb-2 font-semibold">วิธีการคำนวณ</p>
                                     <div class="space-y-2 font-mono">
                                         <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
                                             <span class="text-right">เงินชดเชย</span>
                                             <span>=</span>
-                                            <span>อัตราชดเชย x (ค่าตอบแทนปัจจุบัน - อัตราแรกบรรจุเดิม)</span>
+                                            <span>0.84 x (ค่าตอบแทนปัจจุบัน - อัตราแรกบรรจุเดิม)</span>
                                         </div>
                                         <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
                                             <span class="text-right">อัตราค่าตอบแทนใหม่</span>
@@ -245,33 +277,45 @@
                                             <span>=</span>
                                             <span>อัตราค่าตอบแทนใหม่ - ค่าตอบแทนปัจจุบัน</span>
                                         </div>
+                                        <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
+                                            <span class="text-right">ค่าตอบแทนที่ได้รับ</span>
+                                            <span>=</span>
+                                            <span>ค่าตอบแทนปัจจุบัน + เงินชดเชยที่ได้ปรับ</span>
+                                        </div>
+                                        <div class="grid grid-cols-[auto_auto_1fr] gap-x-3 items-start">
+                                            <span class="text-right">เงินเพิ่มการครองชีพ</span>
+                                            <span>=</span>
+                                            <span>ไม่เกิน 2,000 บาท (รวมกับค่าตอบแทนแล้ว ไม่เกิน 14,600 บาท)</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Calculation Remark -->
-                            <div id="calculation-details" class="pt-4 mt-auto text-sm border-t border-gray-200">
-                                <h4 class="mb-2 font-semibold text-left text-gray-500 uppercase">หลักเกณฑ์และเงื่อนไข
-                                </h4>
-                                <p id="result-remark" class="text-left text-gray-500">
-                                    กรุณากรอกข้อมูลเพื่อเริ่มการคำนวณ
-                                </p>
-                            </div>
                         </div>
 
-                        <!-- No Adjustment Reason (Hidden by default) -->
-                        <div id="no-adjustment-reason" class="hidden">
-                            <div class="p-6 text-center bg-yellow-50 rounded-xl">
-                                <i data-lucide="alert-triangle" class="w-12 h-12 mx-auto text-yellow-500"></i>
-                                <h4 class="mt-4 mb-2 text-lg font-semibold text-yellow-800">ไม่ได้รับการปรับค่าตอบแทน
-                                </h4>
-                                <p id="reason-text" class="text-sm text-yellow-700">
-                                    เนื่องจากค่าตอบแทนปัจจุบันของคุณสูงกว่าหรือเท่ากับฐานค่าตอบแทนใหม่ที่กำหนด
-                                </p>
-                            </div>
+                        <!-- Calculation Remark -->
+                        <div id="calculation-details" class="pt-4 mt-auto text-sm">
+                            <h4 class="mb-2 font-semibold text-left text-gray-500 uppercase">หลักเกณฑ์และเงื่อนไข
+                            </h4>
+                            <p id="result-remark" class="text-left text-gray-500">
+                                กรุณากรอกข้อมูลเพื่อเริ่มการคำนวณ
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- No Adjustment Reason (Hidden by default) -->
+                    <div id="no-adjustment-reason" class="hidden">
+                        <div class="p-6 text-center bg-yellow-50 rounded-xl">
+                            <i data-lucide="alert-triangle" class="w-12 h-12 mx-auto text-yellow-500"></i>
+                            <h4 class="mt-4 mb-2 text-lg font-semibold text-yellow-800">ไม่ได้รับการปรับค่าตอบแทน
+                            </h4>
+                            <p id="reason-text" class="text-sm text-yellow-700">
+                                เนื่องจากค่าตอบแทนปัจจุบันของคุณสูงกว่าหรือเท่ากับฐานค่าตอบแทนใหม่ที่กำหนด
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -285,24 +329,30 @@
 
                 <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     <!-- Info Cards with enhanced effects from index -->
-                    <div class="flex flex-col items-center p-6 text-center border border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl card-hover">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-blue-100 rounded-full transition-colors group-hover:bg-blue-200">
+                    <div
+                        class="flex flex-col items-center p-6 text-center border border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl card-hover">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 p-3 mb-4 transition-colors bg-blue-100 rounded-full group-hover:bg-blue-200">
                             <i data-lucide="calendar-check" class="w-6 h-6 text-blue-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">วันที่มีผลบังคับใช้</h3>
                         <p class="text-gray-600">การปรับขึ้นค่าตอบแทนมีผลตั้งแต่วันที่ 1 พฤษภาคม 2567</p>
                     </div>
 
-                    <div class="flex flex-col items-center p-6 text-center border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl card-hover">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-green-100 rounded-full transition-colors group-hover:bg-green-200">
+                    <div
+                        class="flex flex-col items-center p-6 text-center border border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl card-hover">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 p-3 mb-4 transition-colors bg-green-100 rounded-full group-hover:bg-green-200">
                             <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">อัตราการปรับขึ้น</h3>
                         <p class="text-gray-600">ปรับขึ้น 10% ภายใน 2 ปี สำหรับพนักงานราชการทุกระดับ</p>
                     </div>
 
-                    <div class="flex flex-col items-center p-6 text-center border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl card-hover">
-                        <div class="flex items-center justify-center w-12 h-12 p-3 mb-4 bg-purple-100 rounded-full transition-colors group-hover:bg-purple-200">
+                    <div
+                        class="flex flex-col items-center p-6 text-center border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl card-hover">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 p-3 mb-4 transition-colors bg-purple-100 rounded-full group-hover:bg-purple-200">
                             <i data-lucide="star" class="w-6 h-6 text-purple-600"></i>
                         </div>
                         <h3 class="mb-2 text-xl font-semibold text-gray-800">ค่าตอบแทนผู้จบใหม่</h3>
@@ -322,14 +372,14 @@
     <!-- Enhanced Scripts -->
     <script>
         // Enhanced Navigation Functions
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Function to smooth scroll to section
             function smoothScrollTo(targetId) {
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     const yOffset = -80; // Adjust for fixed navbar
                     const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                    window.scrollTo({top: y, behavior: 'smooth'});
+                    window.scrollTo({ top: y, behavior: 'smooth' });
                 }
             }
 
@@ -338,13 +388,13 @@
             const detailsHeroBtn = document.getElementById('details-hero-btn');
 
             if (calculateHeroBtn) {
-                calculateHeroBtn.addEventListener('click', function() {
+                calculateHeroBtn.addEventListener('click', function () {
                     smoothScrollTo('calculator');
                 });
             }
 
             if (detailsHeroBtn) {
-                detailsHeroBtn.addEventListener('click', function() {
+                detailsHeroBtn.addEventListener('click', function () {
                     smoothScrollTo('information');
                 });
             }
@@ -352,7 +402,7 @@
             // Add Enter key support for form
             const salaryForm = document.getElementById('salary-form');
             if (salaryForm) {
-                salaryForm.addEventListener('keypress', function(e) {
+                salaryForm.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
                         const calculateBtn = document.getElementById('calculate-btn');

@@ -92,7 +92,7 @@ class SalaryCalculator {
    * @returns {object} An object with the calculation result.
    */
   calculate(formData) {
-    console.log("Calculating with latest corrected logic:", formData)
+    console.log("💰 Calculating with NEW logic:", formData)
 
     if (!this.salaryData.length) {
       return { success: false, reason: "ยังไม่ได้โหลดข้อมูลบัญชีเงินเดือน" }
@@ -107,7 +107,9 @@ class SalaryCalculator {
       }
     }
 
-    const { salaryNew, salaryLast, salaryMax, salaryRate } = rule
+    console.log("📋 Rule found:", rule)
+
+    const { salaryNew, salaryLast, salaryMax, salaryRate, workGroup } = rule
     const { currentSalary } = formData
 
     // 1. Calculate the initial compensation and round it up to the nearest 10.
@@ -116,37 +118,81 @@ class SalaryCalculator {
 
     // 2. Calculate the provisional new salary based on the formula.
     const salary_adjust_provisional = salaryNew + salary_increase_rounded
+    console.log("🔄 salary_adjust_provisional:", salary_adjust_provisional)
 
-    // 3. Determine the final salary by applying caps and floors.
-    let salary_adjust_capped
+    // 3. Determine the final salary by applying caps and floors (BEFORE calculating temp allowance).
+    let salary_adjust_final
     let remark = "ปรับค่าตอบแทนตามหลักเกณฑ์ปกติ"
 
     if (salary_adjust_provisional <= currentSalary) {
-      salary_adjust_capped = currentSalary
+      salary_adjust_final = currentSalary
       remark =
         "กรณีที่คำนวณแล้ว อัตราค่าตอบแทนใหม่ได้น้อยกว่าหรือเท่ากับค่าตอบแทนปัจจุบัน จะไม่ได้รับเงินชดเชย และจะได้รับค่าตอบแทนตามที่ได้รับอยู่ในปัจจุบัน"
     } else if (salary_adjust_provisional > salaryMax) {
-      salary_adjust_capped = salaryMax
+      salary_adjust_final = salaryMax
       remark =
         "เงินชดเชยที่ได้รับเมื่อรวมกับค่าตอบแทนแล้ว จะต้องไม่เกินกว่าอัตราค่าตอบแทนขั้นสูงของบัญชีกลุ่มงาน"
     } else {
-      salary_adjust_capped = salary_adjust_provisional
+      salary_adjust_final = salary_adjust_provisional
+    }
+    
+    console.log("✅ salary_adjust_final:", salary_adjust_final)
+
+    // 4. Calculate salary_temp_allowance based on workGroup and conditions using salary_adjust_final
+    let salary_temp_allowance = 0
+    
+    // Check if workGroup is eligible for temp allowance
+    const eligibleWorkGroups = [
+      "กลุ่มงานบริการ",
+      "กลุ่มงานเทคนิคทั่วไป", 
+      "กลุ่มงานเทคนิคพิเศษ"
+    ]
+    
+    console.log("🎯 workGroup:", workGroup, "eligible:", eligibleWorkGroups.includes(workGroup))
+    
+    if (eligibleWorkGroups.includes(workGroup)) {
+      console.log("🔍 Checking temp allowance conditions...")
+      console.log("   salary_adjust_final =", salary_adjust_final)
+      console.log("   salary_adjust_final + 2000 =", salary_adjust_final + 2000)
+      
+      // Condition 1: salary_adjust_final >= 11000 AND salary_adjust_final < 14600 AND salary_adjust_final + 2000 > 14600
+      if (salary_adjust_final >= 11000 && 
+          salary_adjust_final < 14600 && 
+          salary_adjust_final + 2000 > 14600) {
+        salary_temp_allowance = 14600 - salary_adjust_final
+        console.log("✅ Condition 1 matched: salary_temp_allowance =", salary_temp_allowance)
+      }
+      // Condition 2: salary_adjust_final >= 11000 AND salary_adjust_final < 14600 AND salary_adjust_final + 2000 <= 14600
+      else if (salary_adjust_final >= 11000 && 
+               salary_adjust_final < 14600 && 
+               salary_adjust_final + 2000 <= 14600) {
+        salary_temp_allowance = 2000
+        console.log("✅ Condition 2 matched: salary_temp_allowance =", salary_temp_allowance)
+      }
+      // Condition 3: salary_adjust_final < 11000
+      else if (salary_adjust_final < 11000) {
+        salary_temp_allowance = 11000 - salary_adjust_final
+        console.log("✅ Condition 3 matched: salary_temp_allowance =", salary_temp_allowance)
+      } else {
+        console.log("❌ No temp allowance conditions matched")
+      }
     }
 
-    // 4. Calculate the final increase amount from the capped salary.
-    let salary_increase_final = salary_adjust_capped - currentSalary
+    // 5. Calculate total adjusted salary
+    const salary_adjust_total = salary_adjust_final + salary_temp_allowance
+    console.log("💯 salary_adjust_total:", salary_adjust_total)
+
+    // 6. Calculate the final increase amount from the final salary.
+    let salary_increase_final = salary_adjust_final - currentSalary
     if (salary_increase_final < 0) {
       salary_increase_final = 0
     }
 
-    // 5. IMPORTANT: The actual increase amount must be a multiple of 10.
+    // 7. IMPORTANT: The actual increase amount must be a multiple of 10.
     // We use Math.floor to ensure the new salary never exceeds the capped salary.
     salary_increase_final = Math.floor(salary_increase_final / 10) * 10
 
-    // 6. The final salary is the current salary plus the final, rounded increase.
-    const salary_adjust_final = currentSalary + salary_increase_final
-
-    // 7. Return the comprehensive result object.
+    // 8. Return the comprehensive result object.
     return {
       success: true,
       newSalary: salary_adjust_final, // ค่าตอบแทนใหม่ (สุดท้าย)
@@ -158,6 +204,8 @@ class SalaryCalculator {
       salaryNew: salaryNew,
       salaryIncreaseRounded: salary_increase_rounded, // "เงินชดเชย (คำนวณ)"
       salaryAdjust: salary_adjust_provisional, // "ค่าตอบแทนใหม่ (คำนวณ)"
+      salaryTempAllowance: salary_temp_allowance, // "เงินค่าตอบแทนชั่วคราว"
+      salaryAdjustTotal: salary_adjust_total, // "ค่าตอบแทนใหม่รวมเงินชั่วคราว"
     }
   }
 }

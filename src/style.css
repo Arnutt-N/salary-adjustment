@@ -4,7 +4,7 @@
 
 /* Apply Prompt font to the entire page */
 body {
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -39,10 +39,10 @@ body {
 
 @keyframes spin {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -54,12 +54,12 @@ body {
 
 @keyframes fadeInUp {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -116,18 +116,30 @@ body {
 
 /* Animations for Coming Soon page */
 .bounce {
-    animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
 }
 
 .fade-in {
-    animation: fadeIn 1s ease-out;
+  animation: fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .glow {
-    box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+  box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+}
+
+/* Custom margin for calculation method section */
+.calculation-breakdown,
+#calculation-method {
+  margin-top: 1.5rem !important;
 }
