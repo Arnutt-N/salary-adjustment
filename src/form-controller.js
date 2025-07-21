@@ -6,25 +6,18 @@
  * @param {import('./salary-calculator.js').default} calculator - An instance of the SalaryCalculator.
  */
 export async function initializeFormController(calculator) {
-  console.log("Form Controller initialization started")
-  
   // 1. Load the calculator's data first
-  console.log("Loading calculator data...")
   const dataLoaded = await calculator.init()
   if (!dataLoaded) {
-    console.error("Failed to load calculator data")
     alert("ไม่สามารถโหลดข้อมูลบัญชีเงินเดือนได้ โปรดลองอีกครั้ง")
     return
   }
-  console.log("Calculator data loaded successfully")
 
   // 2. Get DOM elements
   const form = document.getElementById("salary-form")
   if (!form) {
-    console.error("Form element not found")
     return
   }
-  console.log("Form element found:", form)
 
   const effectiveDateSelect = document.getElementById("effectiveDate")
   const workGroupSelect = document.getElementById("workGroup")
@@ -43,15 +36,12 @@ export async function initializeFormController(calculator) {
     calculateBtn
   }
   
-  console.log("DOM Elements found:", elements)
-  
   // Check for missing elements
   const missingElements = Object.entries(elements)
     .filter(([name, element]) => !element)
     .map(([name]) => name)
   
   if (missingElements.length > 0) {
-    console.error("Missing DOM elements:", missingElements)
     alert("ไม่พบ element ที่จำเป็น: " + missingElements.join(", "))
     return
   }
@@ -124,10 +114,7 @@ export async function initializeFormController(calculator) {
       event.preventDefault()
     }
     
-    console.log("handleCalculation called")
-    
     if (!effectiveDateSelect || !degreeSelect || !currentSalaryInput) {
-      console.error("Form elements not found")
       alert("เกิดข้อผิดพลาดในระบบ กรุณาโหลดหน้าใหม่")
       return
     }
@@ -138,46 +125,34 @@ export async function initializeFormController(calculator) {
       currentSalary: parseFloat(currentSalaryInput.value) || 0,
     }
 
-    console.log("Form data:", formData)
-
     if (!formData.effectiveDate) {
-      console.log("Validation failed: No effective date")
       alert("กรุณาเลือกวันที่มีผลบังคับใช้")
       return
     }
     
     if (!formData.degreeId || isNaN(formData.degreeId)) {
-      console.log("Validation failed: No degree selected")
       alert("กรุณาเลือกวุฒิการศึกษา")
       return
     }
     
     if (!formData.currentSalary || formData.currentSalary <= 0) {
-      console.log("Validation failed: Invalid current salary")
       alert("กรุณากรอกค่าตอบแทนปัจจุบันที่ถูกต้อง")
       return
     }
 
-    console.log("Calling calculator.calculate")
-    
     try {
       const result = calculator.calculate(formData)
-      console.log("Calculation result:", result)
       displayResult(result)
     } catch (error) {
-      console.error("Calculation error:", error)
       alert("เกิดข้อผิดพลาดในการคำนวณ กรุณาลองอีกครั้ง")
     }
   }
 
   /** Displays the calculation result on the card */
   function displayResult(result) {
-    console.log("displayResult called with:", result)
-    
     const resultRemarkEl = document.getElementById("result-remark")
 
     if (result.success) {
-      console.log("Displaying successful result")
       resultDisplay.classList.remove("hidden")
       noAdjustmentDisplay.classList.add("hidden")
 
@@ -229,7 +204,6 @@ export async function initializeFormController(calculator) {
         resultRemarkEl.textContent = result.remark
       }
     } else {
-      console.log("Displaying error result")
       resultDisplay.classList.add("hidden")
       noAdjustmentDisplay.classList.remove("hidden")
       reasonTextEl.textContent = result.reason

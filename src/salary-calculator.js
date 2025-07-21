@@ -23,10 +23,8 @@ class SalaryCalculator {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
       this.salaryData = await response.json()
-      console.log("Salary data loaded successfully.")
       return true
     } catch (error) {
-      console.error("Failed to load salary data:", error)
       this.salaryData = []
       return false
     }
@@ -92,8 +90,6 @@ class SalaryCalculator {
    * @returns {object} An object with the calculation result.
    */
   calculate(formData) {
-    console.log("💰 Calculating with NEW logic:", formData)
-
     if (!this.salaryData.length) {
       return { success: false, reason: "ยังไม่ได้โหลดข้อมูลบัญชีเงินเดือน" }
     }
@@ -107,8 +103,6 @@ class SalaryCalculator {
       }
     }
 
-    console.log("📋 Rule found:", rule)
-
     const { salaryNew, salaryLast, salaryMax, salaryRate, workGroup } = rule
     const { currentSalary } = formData
 
@@ -118,7 +112,6 @@ class SalaryCalculator {
 
     // 2. Calculate the provisional new salary based on the formula.
     const salary_adjust_provisional = salaryNew + salary_increase_rounded
-    console.log("🔄 salary_adjust_provisional:", salary_adjust_provisional)
 
     // 3. Determine the final salary by applying caps and floors (BEFORE calculating temp allowance).
     let salary_adjust_final
@@ -136,8 +129,6 @@ class SalaryCalculator {
       salary_adjust_final = salary_adjust_provisional
     }
     
-    console.log("✅ salary_adjust_final:", salary_adjust_final)
-
     // 4. Calculate salary_temp_allowance based on workGroup and conditions using salary_adjust_final
     let salary_temp_allowance = 0
     
@@ -148,39 +139,27 @@ class SalaryCalculator {
       "กลุ่มงานเทคนิคพิเศษ"
     ]
     
-    console.log("🎯 workGroup:", workGroup, "eligible:", eligibleWorkGroups.includes(workGroup))
-    
     if (eligibleWorkGroups.includes(workGroup)) {
-      console.log("🔍 Checking temp allowance conditions...")
-      console.log("   salary_adjust_final =", salary_adjust_final)
-      console.log("   salary_adjust_final + 2000 =", salary_adjust_final + 2000)
-      
       // Condition 1: salary_adjust_final >= 11000 AND salary_adjust_final < 14600 AND salary_adjust_final + 2000 > 14600
       if (salary_adjust_final >= 11000 && 
           salary_adjust_final < 14600 && 
           salary_adjust_final + 2000 > 14600) {
         salary_temp_allowance = 14600 - salary_adjust_final
-        console.log("✅ Condition 1 matched: salary_temp_allowance =", salary_temp_allowance)
       }
       // Condition 2: salary_adjust_final >= 11000 AND salary_adjust_final < 14600 AND salary_adjust_final + 2000 <= 14600
       else if (salary_adjust_final >= 11000 && 
                salary_adjust_final < 14600 && 
                salary_adjust_final + 2000 <= 14600) {
         salary_temp_allowance = 2000
-        console.log("✅ Condition 2 matched: salary_temp_allowance =", salary_temp_allowance)
       }
       // Condition 3: salary_adjust_final < 11000
       else if (salary_adjust_final < 11000) {
         salary_temp_allowance = 11000 - salary_adjust_final
-        console.log("✅ Condition 3 matched: salary_temp_allowance =", salary_temp_allowance)
-      } else {
-        console.log("❌ No temp allowance conditions matched")
       }
     }
 
     // 5. Calculate total adjusted salary
     const salary_adjust_total = salary_adjust_final + salary_temp_allowance
-    console.log("💯 salary_adjust_total:", salary_adjust_total)
 
     // 6. Calculate the final increase amount from the final salary.
     let salary_increase_final = salary_adjust_final - currentSalary
