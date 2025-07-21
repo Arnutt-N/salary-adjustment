@@ -11,6 +11,9 @@
     <meta name="keywords" content="เงินเดือนข้าราชการ, พนักงานราชการ, มติครม, การปรับเงินเดือน">
     <meta name="author" content="ระบบสารสนเทศกลาง">
 
+    <!-- Instant Redirect Script (No Flash) -->
+    <script src="/src/redirect-instant.js"></script>
+
     <!-- External Libraries (for standalone usage) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -55,6 +58,19 @@
                     <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-600 fade-in-up delay-2">
                         ข้อมูลสำคัญเกี่ยวกับการปรับเงินเดือนข้าราชการพลเรือน หลักเกณฑ์ เงื่อนไข และรายละเอียดการปรับขึ้นเงินเดือน
                     </p>
+
+                    <!-- Redirect Notice -->
+                    <div class="max-w-2xl mx-auto mt-8 p-4 bg-orange-50 border border-orange-200 rounded-lg fade-in-up delay-3" data-redirect-container>
+                        <div class="flex items-center justify-center">
+                            <i data-lucide="arrow-right" class="w-5 h-5 text-orange-600 mr-2"></i>
+                            <p class="text-orange-800 font-medium" data-redirect-notice>กำลังเปลี่ยนเส้นทางไปยังระบบคำนวณค่าตอบแทน...</p>
+                        </div>
+                        <div class="mt-2">
+                            <div class="bg-orange-200 rounded-full h-2">
+                                <div class="bg-orange-600 h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                         <button class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
@@ -111,6 +127,14 @@
 
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
+
+    <!-- Redirect Script -->
+    <script>
+      // Auto redirect to gov-emp.html after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'gov-emp.html';
+      }, 2000);
+    </script>
 
 </body>
 
