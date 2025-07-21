@@ -11,8 +11,46 @@
     <meta name="keywords" content="เงินเดือนข้าราชการ, พนักงานราชการ, มติครม, การปรับเงินเดือน">
     <meta name="author" content="ระบบสารสนเทศกลาง">
 
-    <!-- Instant Redirect Script (No Flash) -->
-    <script src="/src/redirect-instant.js"></script>
+    <!-- Instant Redirect Script (Inline - No Flash) -->
+    <script>
+        (function() {
+            'use strict';
+            
+            /**
+             * Get current page filename
+             */
+            function getCurrentPageName() {
+                const path = window.location.pathname;
+                const filename = path.split('/').pop() || 'index.html';
+                return filename;
+            }
+            
+            /**
+             * Check if current page should be redirected
+             */
+            function shouldRedirect() {
+                const currentPage = getCurrentPageName();
+                
+                // Pages that should be redirected to gov-emp.html
+                const redirectPages = ['index.html', 'civil-servant.html'];
+                return redirectPages.includes(currentPage);
+            }
+            
+            /**
+             * Perform instant redirect
+             */
+            function performInstantRedirect() {
+                // Use replace() to avoid adding to browser history
+                window.location.replace('gov-emp.html');
+            }
+            
+            // Execute immediately - no waiting for DOM
+            if (shouldRedirect()) {
+                performInstantRedirect();
+            }
+            
+        })();
+    </script>
 
     <!-- External Libraries (for standalone usage) -->
     <script src="https://cdn.tailwindcss.com"></script>
