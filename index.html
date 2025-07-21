@@ -44,19 +44,6 @@
         สำนักงานรัฐมนตรี กระทรวงยุติธรรม และสำนักงานปลัดกระทรวงยุติธรรม
       </p>
 
-      <!-- Redirect Notice -->
-      <div class="max-w-2xl mx-auto mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg fade-in-up delay-3" data-redirect-container>
-        <div class="flex items-center justify-center">
-          <i data-lucide="info" class="w-5 h-5 text-blue-600 mr-2"></i>
-          <p class="text-blue-800 font-medium" data-redirect-notice>กำลังเปลี่ยนเส้นทางไปยังระบบคำนวณค่าตอบแทน...</p>
-        </div>
-        <div class="mt-2">
-          <div class="bg-blue-200 rounded-full h-2">
-            <div class="bg-blue-600 h-2 rounded-full animate-pulse" style="width: 100%"></div>
-          </div>
-        </div>
-      </div>
-
       <div class="grid max-w-4xl grid-cols-1 gap-8 mx-auto mt-12 md:grid-cols-2">
         <a href="coming-soon.html"
           class="block p-8 bg-white shadow-lg group rounded-2xl card-hover fade-in-up delay-3">
@@ -130,22 +117,6 @@
   <div id="toast-container"></div>
 
   <div id="footer-container"></div>
-
-  <!-- Redirect Script -->
-  <script type="module">
-    import { autoRedirectToGovEmp, addCancelButton } from '/src/redirect-handler.js';
-    
-    // รอให้หน้าโหลดเสร็จ
-    document.addEventListener('DOMContentLoaded', () => {
-      // เริ่ม auto redirect ภายใน 3 วินาที พร้อมแสดง countdown
-      const redirectController = autoRedirectToGovEmp(3000, true);
-      
-      // เพิ่มปุ่มยกเลิก redirect
-      setTimeout(() => {
-        addCancelButton(redirectController);
-      }, 500);
-    });
-  </script>
 
   <script type="module" src="/src/main.js"></script>
 </body>
