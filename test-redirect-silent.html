@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Test Redirect (Silent Mode)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Redirect Script (Silent Mode) -->
+    <script src="/src/redirect.js"></script>
+</head>
+<body class="bg-slate-50 font-prompt">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4">🧪 Test Redirect (Silent Mode)</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">📋 การทดสอบ:</h2>
+            
+            <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>เปิด index.html → ควร redirect เงียบๆ ไป gov-emp.html</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>เปิด civil-servant.html → ควร redirect เงียบๆ ไป gov-emp.html</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
+                    <span>เปิด Developer Console (F12) → ไม่ควรเห็น message redirect</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
+                    <span>เห็นแค่ preloading animation ที่ใช้อยู่เดิม</span>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                <h3 class="text-green-800 font-semibold">✅ การตั้งค่าปัจจุบัน:</h3>
+                <ul class="text-green-700 text-sm mt-2 space-y-1">
+                    <li>• showDebugMessage: <strong>false</strong></li>
+                    <li>• delay: <strong>0ms</strong> (redirect ทันที)</li>
+                    <li>• targetPage: <strong>gov-emp.html</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 mr-4">
+                ทดสอบ index.html
+            </a>
+            <a href="civil-servant.html" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                ทดสอบ civil-servant.html
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // แสดงสถานะปัจจุบัน
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 Test page loaded - Redirect script is in silent mode');
+            
+            // ตรวจสอบว่า SalaryRedirect object มีอยู่หรือไม่
+            if (window.SalaryRedirect) {
+                console.log('✅ SalaryRedirect object is available');
+                console.log('📋 Current page:', window.SalaryRedirect.getCurrentPage());
+                console.log('🔄 Should redirect:', window.SalaryRedirect.shouldRedirect());
+            }
+        });
+    </script>
+</body>
+</html>

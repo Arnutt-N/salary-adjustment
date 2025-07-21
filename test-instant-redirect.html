@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Test Instant Redirect (No Flash)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-prompt">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4">🚀 Test Instant Redirect (No Flash)</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">✅ การแก้ไข:</h2>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>ใช้ <strong>redirect-instant.js</strong> แทน redirect.js</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>วาง script ที่ตำแหน่งต้นๆ ของ &lt;head&gt;</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>ไม่รอ DOM ready - redirect ทันที</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>ไม่มี console message</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <h3 class="text-green-800 font-semibold">🎯 ผลลัพธ์ที่คาดหวัง:</h3>
+                <div class="text-sm space-y-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                        <span><strong>index.html</strong> → redirect ทันที ไม่เห็นเนื้อหาแว้บ</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                        <span><strong>civil-servant.html</strong> → redirect ทันที ไม่เห็นเนื้อหาแว้บ</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-gray-500 rounded-full"></span>
+                        <span>Console สะอาด ไม่มี message</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 bg-yellow-50 rounded-lg">
+                <h3 class="text-yellow-800 font-semibold">⚡ เทคนิคที่ใช้:</h3>
+                <ul class="text-yellow-700 text-sm mt-2 space-y-1">
+                    <li>• Execute ทันทีไม่รอ DOMContentLoaded</li>
+                    <li>• ใช้ window.location.replace() แทน assign</li>
+                    <li>• วาง script ก่อน CSS และ external libraries</li>
+                    <li>• ไม่มี delay หรือ setTimeout</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 mr-4">
+                ทดสอบ index.html
+            </a>
+            <a href="civil-servant.html" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                ทดสอบ civil-servant.html
+            </a>
+        </div>
+        
+        <div class="mt-4 text-center text-sm text-gray-600">
+            <p>⚠️ ถ้ายังเห็นเนื้อหาแว้บ อาจต้องลองปิด browser cache (Ctrl+Shift+R)</p>
+        </div>
+    </div>
+</body>
+</html>
