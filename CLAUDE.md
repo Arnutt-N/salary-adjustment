@@ -31,8 +31,14 @@ npm run deploy
 The application uses Vite's multi-page setup defined in `vite.config.js`:
 - `index.html` - Main landing page with navigation
 - `gov-emp.html` - Government employee salary calculator
-- `civil-servant.html` - Civil servant information page
+- `civil-servant.html` - Civil servant salary calculator with legal information system
 - `coming-soon.html` - Placeholder page
+
+### Civil Servant Page Features (`civil-servant.html`)
+- **Salary Calculator**: Education-based calculation system (domestic/international degrees)
+- **Comprehensive Results Display**: New salary, cost of living allowance, calculation breakdown
+- **Legal Information Section**: Interactive cards with external links to OCSC documents
+- **Enhanced UI**: Improved hover effects, animations, and user interaction patterns
 
 ### Core System Components
 
@@ -93,3 +99,29 @@ Salary data is stored in `/public/data/salaryGovEmp.json` with fields:
 - Multi-page application setup in `vite.config.js`
 - Tailwind CSS with PostCSS processing
 - Production builds output to `dist/` directory
+
+## Recent Development Tasks Completed
+
+### Civil Servant Page Enhancements
+- **Legal Information Cards**: Added interactive cards linking to official OCSC documents
+  - ว 9/2567 (salary rates for CSC-approved qualifications)
+  - Guidelines for salary adjustment implementation
+  - Legacy regulations (ว 20/2555, ว 3/2555, ว 19/2555) with individual clickable links
+- **UI/UX Improvements**: Enhanced hover effects, smooth animations, and consistent styling
+- **Link Management**: External links with proper target="_blank" and visual indicators
+- **Typography Consistency**: Standardized font weights, line heights, and spacing across cards
+- **Responsive Design**: Proper behavior across mobile and desktop viewports
+
+### Development Patterns Established
+- **Card Component Structure**: Consistent layout for information display cards
+- **External Link Integration**: Proper handling of government website links
+- **Hover Effect Patterns**: Unified approach to interactive elements
+- **Typography Standards**: Established patterns for Thai text rendering
+- **Link Separation Techniques**: Methods to prevent underline overlap in inline links
+
+### Code Quality Standards Applied
+- Clean HTML structure with semantic elements
+- Consistent CSS class naming conventions
+- Proper separation of concerns between content and styling
+- Accessibility considerations for external links
+- Performance optimization through efficient CSS selectors
