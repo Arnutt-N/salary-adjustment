@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔕 Test Toast Disabled</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Include main components -->
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body class="bg-slate-50 font-prompt">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+    
+    <div class="container mx-auto p-8 pt-24">
+        <h1 class="text-2xl font-bold mb-4">🔕 Test Toast Disabled</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">✅ การปิด Toast Notification:</h2>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-red-500 rounded-full"></span>
+                    <span>Toast "อัปเดตล่าสุด..." ถูกปิดการแสดงผลแล้ว</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>โค้ด Toast ยังคงอยู่ครบถ้วน (ไม่ได้ลบ)</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
+                    <span>สามารถเปิดใช้ใหม่ได้ง่ายๆ โดย uncomment code</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <h3 class="text-blue-800 font-semibold">🧪 ทดสอบในหน้าต่างๆ:</h3>
+                <div class="text-sm space-y-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-gray-500 rounded-full"></span>
+                        <span><strong>gov-emp.html</strong> → ไม่ควรเห็น toast notification</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-gray-500 rounded-full"></span>
+                        <span><strong>coming-soon.html</strong> → ไม่ควรเห็น toast notification</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-gray-500 rounded-full"></span>
+                        <span><strong>หน้านี้</strong> → ไม่ควรเห็น toast notification</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="text-gray-800 font-semibold">🔧 วิธีการปิด:</h3>
+                <ul class="text-gray-700 text-sm mt-2 space-y-1">
+                    <li>• เพิ่ม <code class="bg-gray-200 px-1 rounded">toastElement.style.display = "none"</code></li>
+                    <li>• Comment out ส่วนแสดง toast หลัง 2 วินาที</li>
+                    <li>• ยังคงปุ่มปิด toast ไว้ (เผื่อเปิดใช้ใหม่)</li>
+                    <li>• ไม่ลบโค้ด Toast components ออก</li>
+                </ul>
+            </div>
+            
+            <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                <h3 class="text-green-800 font-semibold">🔄 วิธีเปิดใช้ใหม่ (ในอนาคต):</h3>
+                <ol class="text-green-700 text-sm mt-2 space-y-1">
+                    <li>1. ลบบรรทัด <code class="bg-green-100 px-1 rounded">toastElement.style.display = "none"</code></li>
+                    <li>2. Uncomment ส่วน setTimeout ที่แสดง toast</li>
+                    <li>3. Toast จะกลับมาแสดงผลปกติ</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="gov-emp.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 mr-4">
+                ทดสอบ gov-emp.html
+            </a>
+            <a href="coming-soon.html" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">
+                ทดสอบ coming-soon.html
+            </a>
+        </div>
+        
+        <div class="mt-4 text-center text-sm text-gray-600">
+            <p>⏰ รอ 5 วินาที หลังโหลดหน้า ถ้าไม่เห็น toast แสดงว่าปิดสำเร็จ</p>
+        </div>
+    </div>
+    
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 Test page loaded - Toast should be disabled');
+            
+            // ตรวจสอบสถานะ toast หลัง 3 วินาที
+            setTimeout(() => {
+                const toast = document.getElementById('toast-notification');
+                if (toast) {
+                    const isVisible = toast.style.display !== 'none' && 
+                                    !toast.classList.contains('translate-y-20');
+                    console.log('🔍 Toast status:', {
+                        element: 'found',
+                        display: toast.style.display,
+                        visible: isVisible
+                    });
+                } else {
+                    console.log('❓ Toast element not found');
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

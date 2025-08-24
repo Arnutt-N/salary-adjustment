@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔗 Test Clickable Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-prompt">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4">🔗 Test Clickable Information Cards</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">✅ การแก้ไข Information Section:</h2>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>เปลี่ยนการ์ดจาก <code class="bg-gray-100 px-1 rounded">&lt;div&gt;</code> เป็น <code class="bg-gray-100 px-1 rounded">&lt;a&gt;</code> tag</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>เพิ่ม hover effects: scale, shadow, color changes</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>เพิ่มข้อความ "คลิกเพื่อดูรายละเอียด" พร้อม icon</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span>ยังคงลิงก์ปลายทางเดิมไว้ (เปิดใน tab ใหม่)</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <h3 class="text-blue-800 font-semibold">🎯 ลิงก์ที่คลิกได้:</h3>
+                <div class="text-sm space-y-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
+                        <span><strong>การ์ดที่ 1:</strong> ประกาศ คพร. → https://www.ocsc.go.th/?post_type=laws&p=103800</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span><strong>การ์ดที่ 2:</strong> แนวทางการปรับ → https://www.ocsc.go.th/?post_type=news&p=104832</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+                        <span><strong>การ์ดที่ 3:</strong> อัตราเดิม → https://www.ocsc.go.th/?post_type=laws&p=80605</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 bg-blue-50 rounded-lg">
+                <h3 class="text-blue-800 font-semibold">✨ Hover Effects ที่เพิ่ม:</h3>
+                <ul class="text-blue-700 text-sm mt-2 space-y-1">
+                    <li>• <strong>Scale:</strong> การ์ดขยายใหญ่เล็กน้อย (105%)</li>
+                    <li>• <strong>Shadow:</strong> เงาเข้มขึ้น</li>
+                    <li>• <strong>Border:</strong> เปลี่ยนสีขอบ</li>
+                    <li>• <strong>Text Color:</strong> ข้อความเปลี่ยนสีตามธีม</li>
+                    <li>• <strong>Icon:</strong> พื้นหลัง icon เปลี่ยนสี</li>
+                    <li>• <strong>Cursor:</strong> แสดง pointer cursor</li>
+                </ul>
+            </div>
+            
+            <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                <h3 class="text-green-800 font-semibold">🧪 วิธีทดสอบ:</h3>
+                <ol class="text-green-700 text-sm mt-2 space-y-1">
+                    <li>1. ไปที่หน้า <strong>gov-emp.html</strong></li>
+                    <li>2. เลื่อนลงไปหา <strong>"กฎหมายและหนังสือเวียนที่เกี่ยวข้อง"</strong></li>
+                    <li>3. <strong>Hover เมาส์</strong>บนการ์ดแต่ละใบ → ควรเห็น effects</li>
+                    <li>4. <strong>คลิกที่การ์ด</strong> → ควรเปิดลิงก์ใน tab ใหม่</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="gov-emp.html#information" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                ทดสอบการ์ดใน gov-emp.html
+            </a>
+        </div>
+        
+        <div class="mt-4 text-center text-sm text-gray-600">
+            <p>💡 การ์ดจะเปิดลิงก์ในแท็บใหม่ เพื่อไม่ให้ผู้ใช้ออกจากระบบ</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 Test page loaded - Information cards should be clickable');
+            
+            // จำลอง Lucide icons initialization
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

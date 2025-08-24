@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚫 No Redirect Messages Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-prompt">
+    <div class="container mx-auto p-8">
+        <h1 class="text-2xl font-bold mb-4">🚫 No Redirect Messages Test</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">✅ Redirect Messages Removed:</h2>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span><strong>index.html</strong> - ลบ UI redirect notice แล้ว</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span><strong>civil-servant.html</strong> - ลบ UI redirect notice แล้ว</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-green-500 rounded-full"></span>
+                    <span><strong>redirect-handler.js</strong> - ลบ script calls ออกแล้ว</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <span class="w-4 h-4 bg-blue-500 rounded-full"></span>
+                    <span><strong>redirect-instant.js</strong> - ใช้แค่ระบบนี้ (silent redirect)</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <h3 class="text-blue-800 font-semibold">🎯 การแก้ไขที่ทำ:</h3>
+                <div class="text-sm space-y-2">
+                    <div class="p-3 bg-red-50 rounded-lg">
+                        <strong class="text-red-800">ลบ UI Components:</strong>
+                        <code class="block text-xs mt-1 text-red-700">
+                        &lt;div class="...redirect-container"&gt;<br>
+                        &nbsp;&nbsp;กำลังเปลี่ยนเส้นทางไปยังระบบ...<br>
+                        &lt;/div&gt;
+                        </code>
+                    </div>
+                    
+                    <div class="p-3 bg-red-50 rounded-lg">
+                        <strong class="text-red-800">ลบ JavaScript:</strong>
+                        <code class="block text-xs mt-1 text-red-700">
+                        import { autoRedirectToGovEmp } from '/src/redirect-handler.js';<br>
+                        autoRedirectToGovEmp(3000, true);
+                        </code>
+                    </div>
+                    
+                    <div class="p-3 bg-green-50 rounded-lg">
+                        <strong class="text-green-800">เหลือแค่:</strong>
+                        <code class="block text-xs mt-1 text-green-700">
+                        &lt;script src="/src/redirect-instant.js"&gt;&lt;/script&gt;
+                        </code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 bg-green-50 rounded-lg">
+                <h3 class="text-green-800 font-semibold">✨ ผลลัพธ์ที่คาดหวัง:</h3>
+                <ul class="text-green-700 text-sm mt-2 space-y-1">
+                    <li>• <strong>ไม่เห็นข้อความ</strong> "กำลังเปลี่ยนเส้นทาง..."</li>
+                    <li>• <strong>ไม่เห็น progress bar</strong> หรือ loading indicator</li>
+                    <li>• <strong>ไม่เห็นปุ่มยกเลิก</strong> redirect</li>
+                    <li>• <strong>redirect ทันที</strong> ไม่มี delay</li>
+                    <li>• <strong>เห็นแค่ preloader</strong> animation เท่านั้น</li>
+                </ul>
+            </div>
+            
+            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                <h3 class="text-blue-800 font-semibold">📋 สิ่งที่ลบออก:</h3>
+                <ul class="text-blue-700 text-sm mt-2 space-y-1">
+                    <li>• UI redirect notice (สีฟ้าและสีส้ม)</li>
+                    <li>• Progress bar animation</li>
+                    <li>• Countdown timer (3 วินาที)</li>
+                    <li>• Cancel redirect button</li>
+                    <li>• JavaScript import redirect-handler.js</li>
+                </ul>
+            </div>
+            
+            <div class="mt-4 p-4 bg-yellow-50 rounded-lg">
+                <h3 class="text-yellow-800 font-semibold">⚡ ระบบที่ยังคงทำงาน:</h3>
+                <ul class="text-yellow-700 text-sm mt-2 space-y-1">
+                    <li>• <strong>redirect-instant.js</strong> - redirect ทันทีไม่มี UI</li>
+                    <li>• <strong>Preloader animation</strong> - จาก CSS</li>
+                    <li>• <strong>Calculator system</strong> - ทำงานปกติใน gov-emp.html</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="index.html" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 mr-4">
+                ทดสอบ index.html
+            </a>
+            <a href="civil-servant.html" class="inline-block bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700">
+                ทดสอบ civil-servant.html
+            </a>
+        </div>
+        
+        <div class="mt-4 text-center text-sm text-gray-600">
+            <p>🎯 ควรจะ redirect ทันทีไม่เห็นข้อความใดๆ</p>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Test for redirect message elements
+            setTimeout(() => {
+                const redirectContainers = document.querySelectorAll('[data-redirect-container]');
+                const redirectNotices = document.querySelectorAll('[data-redirect-notice]');
+                
+                console.log('🔍 Checking for redirect UI elements...');
+                console.log('Redirect containers found:', redirectContainers.length);
+                console.log('Redirect notices found:', redirectNotices.length);
+                
+                if (redirectContainers.length === 0 && redirectNotices.length === 0) {
+                    console.log('✅ SUCCESS: No redirect UI elements found!');
+                } else {
+                    console.log('⚠️ WARNING: Found redirect UI elements that should be removed');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -11,6 +11,47 @@
     <meta name="keywords" content="เงินเดือนข้าราชการ, พนักงานราชการ, มติครม, การปรับเงินเดือน">
     <meta name="author" content="ระบบสารสนเทศกลาง">
 
+    <!-- Instant Redirect Script (Inline - No Flash) -->
+    <script>
+        (function() {
+            'use strict';
+            
+            /**
+             * Get current page filename
+             */
+            function getCurrentPageName() {
+                const path = window.location.pathname;
+                const filename = path.split('/').pop() || 'index.html';
+                return filename;
+            }
+            
+            /**
+             * Check if current page should be redirected
+             */
+            function shouldRedirect() {
+                const currentPage = getCurrentPageName();
+                
+                // Pages that should be redirected to gov-emp.html
+                const redirectPages = ['index.html', 'civil-servant.html'];
+                return redirectPages.includes(currentPage);
+            }
+            
+            /**
+             * Perform instant redirect
+             */
+            function performInstantRedirect() {
+                // Use replace() to avoid adding to browser history
+                window.location.replace('gov-emp.html');
+            }
+            
+            // Execute immediately - no waiting for DOM
+            if (shouldRedirect()) {
+                performInstantRedirect();
+            }
+            
+        })();
+    </script>
+
     <!-- External Libraries (for standalone usage) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -55,7 +96,7 @@
                     <p class="mt-6 max-w-3xl mx-auto text-xl text-gray-600 fade-in-up delay-2">
                         ข้อมูลสำคัญเกี่ยวกับการปรับเงินเดือนข้าราชการพลเรือน หลักเกณฑ์ เงื่อนไข และรายละเอียดการปรับขึ้นเงินเดือน
                     </p>
-                    
+
                     <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                         <button class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
                             ดูรายละเอียด
@@ -111,6 +152,14 @@
 
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
+
+    <!-- Redirect Script -->
+    <script>
+      // Auto redirect to gov-emp.html after 2 seconds
+      setTimeout(() => {
+        window.location.href = 'gov-emp.html';
+      }, 2000);
+    </script>
 
 </body>
 

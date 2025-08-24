@@ -98,18 +98,22 @@ function initializeNavigation() {
 
 /**
  * Initializes the toast notification's show/hide functionality.
+ * NOTE: Toast display is currently disabled
  */
 function initializeToast() {
   const toastElement = document.getElementById("toast-notification")
   const closeButton = document.getElementById("close-toast")
 
   if (toastElement && closeButton) {
-    // Show toast after a delay
-    setTimeout(() => {
-      toastElement.classList.remove("translate-y-20")
-    }, 2000)
+    // Hide toast by default (disabled feature)
+    toastElement.style.display = "none"
+    
+    // Show toast after a delay (DISABLED)
+    // setTimeout(() => {
+    //   toastElement.classList.remove("translate-y-20")
+    // }, 2000)
 
-    // Handle close button click
+    // Handle close button click (still functional if manually shown)
     closeButton.addEventListener("click", () => {
       toastElement.classList.add("translate-y-20")
       setTimeout(() => {
