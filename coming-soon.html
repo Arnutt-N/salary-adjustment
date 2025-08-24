@@ -20,6 +20,25 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/hiphop-dog.png">
     <link rel="shortcut icon" type="image/png" href="/images/hiphop-dog.png">
+    
+    <!-- Instant Redirect Script -->
+    <script>
+        (function() {
+            'use strict';
+            
+            /**
+             * Perform instant redirect to civil-servant.html
+             */
+            function performInstantRedirect() {
+                // Use replace() to avoid adding to browser history
+                window.location.replace('civil-servant.html');
+            }
+            
+            // Execute immediately - no waiting for DOM
+            performInstantRedirect();
+            
+        })();
+    </script>
 </head>
 
 <body class="bg-slate-50">

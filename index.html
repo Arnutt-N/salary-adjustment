@@ -11,49 +11,6 @@
   <meta name="keywords" content="เงินเดือนข้าราชการ, พนักงานราชการ, มติครม, การปรับเงินเดือน">
   <meta name="author" content="ระบบสารสนเทศกลาง">
 
-  <!-- Instant Redirect Script (Inline - No Flash) -->
-  <script>
-    (function() {
-        'use strict';
-        
-        /**
-         * Get current page filename
-         */
-        function getCurrentPageName() {
-            const path = window.location.pathname;
-            const filename = path.split('/').pop() || 'index.html';
-            return filename;
-        }
-        
-        /**
-         * Check if current page should be redirected
-         */
-        function shouldRedirect() {
-            const currentPage = getCurrentPageName();
-            
-            // Handle root path (/) as index.html
-            if (window.location.pathname === '/' || currentPage === '' || currentPage === 'index.html') {
-                return true;
-            }
-            
-            return false;
-        }
-        
-        /**
-         * Perform instant redirect
-         */
-        function performInstantRedirect() {
-            // Use replace() to avoid adding to browser history
-            window.location.replace('gov-emp.html');
-        }
-        
-        // Execute immediately - no waiting for DOM
-        if (shouldRedirect()) {
-            performInstantRedirect();
-        }
-        
-    })();
-  </script>
 
   <!-- External Libraries (for standalone usage) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -86,7 +43,7 @@
       </p>
 
       <div class="grid max-w-4xl grid-cols-1 gap-8 mx-auto mt-12 md:grid-cols-2">
-        <a href="coming-soon.html"
+        <a href="civil-servant.html"
           class="block p-8 bg-white shadow-lg group rounded-2xl card-hover fade-in-up delay-3">
           <div class="flex justify-center mb-4">
             <div class="p-4 transition-colors bg-indigo-100 rounded-full group-hover:bg-indigo-200">
